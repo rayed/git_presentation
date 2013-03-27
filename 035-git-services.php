@@ -60,6 +60,13 @@ $ git push
 
 
 <section>
+<h2>GitHub: Existing Project</h2>
+<pre class="fragment"><code>$ git remote add origin git@github.com:user/repo_name.git</code></pre>
+<pre class="fragment"><code>$ git push -u origin master</code></pre>
+</section>
+
+
+<section>
 <h2>Heroku</h2>
 <p class="fragment">Platform as a service (PaaS) Provider</p>
 <p class="fragment">Fire your System Admin</p>

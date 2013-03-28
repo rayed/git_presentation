@@ -41,7 +41,7 @@
 
 
 <section>
-	<h1>Git</h1>
+	<p><img src="img/Git-Logo-White.png" "Git Logo" border="0" style="border:0; background:transparent; box-shadow:none;" />
 	<h3>Source Code Managment</h3>
 	<p>
 		<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>

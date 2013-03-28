@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introduction to Git Source Code Managment</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+
+
+<section>
+	<p><img src="img/Git-Logo-White.png" "Git Logo" border="0" style="border:0; background:transparent; box-shadow:none;" />
+	<h3>Source Code Managment</h3>
+	<p>
+		<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>
+	</p>
+</section>
+
+<section>
+	<h2>What will we cover?</h2>
+	<ol>
+	<li class="fragment">Source Code Managment</li>
+	<li class="fragment">Git Basics</li>
+	<li class="fragment">Git Branching</li>
+	<li class="fragment">Git on the Server</li>
+	<li class="fragment">GitHub &amp; Heroku</li>
+	<li class="fragment">Tips</li>
+	</ol>
+</section>
+
+
+<section>
+<section>
+<h2>Source Code Managment</h2>
+</section>
+
+<section>
+<h2>What is SCM?</h2>
+<p>Manage Changes to Source Code</p>
+</section>
+
+<section>
+<h2>Why Change Code?</h2>
+<ul>
+<li class="fragment">New Customer Requirement</li>
+<li class="fragment">Bugs</li>
+<li class="fragment">New Features</li>
+<li class="fragment">Improvments: Performance, Desgin, Graphics, etc ...</li>
+<li class="fragment">Mistakes: Delete, Modify</li>
+</ul>
+</section>
+
+<section>
+<h2>... So! Just change it!</h2>
+</section>
+
+<section>
+<h2>What Could Go Wrong?</h2>
+<ul>
+<li class="fragment">Change is Buggy</li>
+<li class="fragment">Design is Ugly</li>
+<li class="fragment">Performance Degraded</li>
+<li class="fragment">Undo Unintentional Deletes</li>
+<li class="fragment">etc ...</li>
+</ul>
+<p class="fragment">Go Back to Old Code</p>
+</section>
+
+<section>
+<h2> ... need for branches & tags ...</h2>
+</section>
+
+<section>
+<h2> ... multi user access ...</h2>
+</section>
+
+<section>
+<h2>Poor Man's SCM</h2>
+<p>
+Comment Old Code
+<pre><code contenteditable>
+/*
+// Old code 
+$password = md5($password);
+*/
+// Add Salt to Password
+$password = md5($salt . $password);
+</code></pre>
+</p>
+<p class="fragment">
+Soon file will have 10% code 90% old code
+<p>
+</section>
+
+<section>
+<h2>Poor Man's SCM</h2>
+<p>
+Multiple Copies of the File:
+<pre><code contenteditable>
+$ ls -l
+user_controller.php
+user_controller_2012_03_12.php
+user_controller_2012_01_23.php
+user_controller_before_migration.php
+user_model.php
+user_model_2012_02_18.php
+</code></pre>
+</p>
+<ul>
+<li class="fragment">Pollute file system with old files</li>
+<li class="fragment">Files depends on other files, version don't match!</li> 
+</ul>
+</section>
+
+<section>
+<h2>Poor Man's SCM</h2>
+<p>
+Multiple Copies of the whole project:
+<pre><code contenteditable>
+$ ls -l websites
+customer1
+customer1_website_2011_06_03
+customer1_website_2012_04_22
+customer1_website_new_design
+customer1_website_new_design2
+customer2
+customer2_website_2011_08_11
+customer2_website_2012_12_22
+customer2_website_light_design
+customer2_website_green_design
+:
+:
+customer8_website_small_test
+</code></pre>
+</p>
+<ul>
+<li class="fragment">Large Size</li>
+<li class="fragment">What changed between different versions</li>
+</ul>
+</section>
+
+
+<section>
+<h2>Why Git?</h2>
+<ul>
+<li class="fragment">Local: Serverless, Offline, Repository Copy</li>
+<li class="fragment">Fast: Even for Large Projects</li>
+<li class="fragment">Small: Less Disk Space</li>
+<li class="fragment">Distributed: Copy the Whole Repository</li>
+<li class="fragment">Easy to Learn: Productive After 1 Hour Tutorial</li>
+<li class="fragment">The New Standard: GitHub, Android, Apache, Drupal, Eclipse, Fedora, Gnome, KDE, Linux, Perl, PHP, PostgreSQL, Qt, Rails, list go on ... </li>
+</ul>
+<p class="fragment"><a href="http://thkoch2001.github.com/whygitisbetter/">Why Git is Better than X</a></p>
+</section>
+
+
+</section>
+
+
+<section>
+<section>
+<h2>Git Basics</h2>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>Life without Git</p>
+<pre class="fragment"><code>
+$ ls -l
+img/
+css/
+js/
+index.html
+</code></pre>
+
+<pre class="fragment"><code>
+$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+</code></pre>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>Create Local Repository</p>
+<pre class="fragment"><code>
+$ git init .
+</code></pre>
+
+<pre class="fragment"><code>
+$ ls -la
+.git  &lt;=======  Git Local Repo
+img/
+css/
+js/
+index.html
+</code></pre>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>Untracked</p>
+<pre class="fragment"><code>
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	css/
+#	img/
+#	index.html
+#	js/
+nothing added to commit but untracked files present (use "git add" to track)
+</code></pre>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>Track and Stage</p>
+<pre class="fragment"><code>
+$ git add .  &lt;====== "." everything in current dir
+</code></pre>
+
+<pre class="fragment"><code>
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   css/sample
+#	new file:   img/sample
+#	new file:   index.html
+#	new file:   js/sample
+#
+</code></pre>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>Commit!!</p>
+<pre class="fragment"><code>
+$ git commit -m "My First Commit"
+</code></pre>
+
+<pre class="fragment"><code>
+$ git status
+# On branch master
+nothing to commit, working directory clean
+</code></pre>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>Change Code</p>
+<pre class="fragment"><code>
+$ edit index.html  &lt;============== CHANGE FILE
+$ edit about.html  &lt;============== NEW FILE
+</code></pre>
+<pre class="fragment"><code>
+$ git status
+# Changes not staged for commit:
+#	modified:   index.html
+#
+# Untracked files:
+#	about.html
+no changes added to commit (use "git add" and/or "git commit -a")
+</code></pre>
+<p class="fragment">index.html: Tracked ... NOT Staged</p>
+<p class="fragment">about.html: NOT Tracked ... NOT Staged</p>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>Stage <span class="fragment">and Track</span></p>
+<pre class="fragment"><code>
+$ git add index.html  &lt; ============== Stage
+</code></pre>
+<pre class="fragment"><code>
+$ git add about.html  &lt; ============== Track and Stage
+</code></pre>
+<pre class="fragment"><code>
+$ git status
+# Changes to be committed:
+#	new file:   about.html
+#	modified:   index.html
+</code></pre>
+<p class="fragment">Not Commited Yet!!</p>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<p>My Second Commit</p>
+<pre class="fragment"><code>
+$ git commit -m "Added About page"
+</code></pre>
+<pre class="fragment"><code>
+$ git status 
+# On branch master
+nothing to commit, working directory clean
+</code></pre>
+</section>
+
+
+<section>
+<h2>Local Repository</h2>
+<h3>When to Stage and When to Commit?</h3>
+<p class="fragment">
+Stage when file reach working state
+</p>
+<p class="fragment">
+Commit when project reach working state
+</p>
+</section>
+
+
+<section>
+<h2>Recap with Graphs</h2>
+<p>Fancy Graphs</p>
+</section>
+
+
+<section>
+<h2>Time Machine</h2>
+<p>... or what if I commit my code!</p>
+</section>
+
+
+<section>
+<h2>git log</h2>
+<pre class="fragment"><code>
+$ git log
+</code></pre>
+
+<pre class="fragment"><code>
+commit e78205f5b61fa5ef8f94af7bae5a5783bb8a0625
+Author: Rayed Alrashed &lt;rayed@example.com&gt;
+Date:   Tue Mar 12 23:28:54 2013 +0000
+
+Added About page
+</code></pre>
+
+<pre class="fragment"><code>
+commit 45b30fc4324e116db551845e588c9086aa26a625
+Author: Rayed Alrashed &lt;rayed@example.com&gt;
+Date:   Wed Mar 27 06:28:02 2013 +0000
+
+My first commit
+</code></pre>
+
+<p>
+<span class="fragment">What?</span>
+<span class="fragment">When?</span>
+<span class="fragment">Who?</span>
+<span class="fragment">ID</span>
+</p>
+
+</section>
+
+
+<section>
+<h2>Travel to the Past</h2>
+<pre class="fragment"><code>
+$ git checkout 45b30fc4324e116db551845e588c9086aa26a625
+</code></pre>
+
+<pre class="fragment"><code>
+$ ls -l
+.git
+img/
+css/
+js/
+index.html  &gt; ==== Our OLD index
+    &gt; ==== about.html gone!
+</code></pre>
+<p class="fragment">Warning: You can't change the past ...</p>
+<p class="fragment"> ... may be in a parallel universe 
+<span class="fragment"> (AKA branch)</span>
+</p>
+</section>
+
+
+<section>
+<h2>Return to the Present</h2>
+<pre class="fragment"><code>
+$ git checkout master
+</code></pre>
+
+<pre class="fragment"><code>
+$ ls -l
+.git
+img/
+css/
+js/
+index.html  &gt; ==== Latest index
+about.html  &gt; ==== about.html is Back
+</code></pre>
+</section>
+
+
+<section>
+<h2>What Changed</h2>
+<p>Show code changes between 2 commits</p>
+<pre class="fragment"><code>
+$ git diff 45b30fc4324e116db551845e588c9086aa26a625 
+</code></pre>
+<pre class="fragment"><code>
+--- a/about.html
++++ b/about.html
+@@ -1 +1 @@
+-&lt;h1&gt;About Us&lt;/h1&gt;
++&lt;h1&gt;About the Company&lt;/h1&gt;
+</code></pre>
+
+</section>
+
+</section>
+
+
+<section>
+<section>
+<h2>Git Branching</h2>
+</section>
+
+
+</section>
+
+
+<section>
+<section>
+<h2>Git on the Server</h2>
+</section>
+</section>
+
+
+<section>
+<section>
+<h2>GitHub &amp; Hiroku</h2>
+</section>
+
+
+<section>
+<h2>GitHub</h2>
+<p class="fragment"><a href="http://github.com/">GitHub.com</a></p>
+<p class="fragment">Repository Hosting</p>
+<p class="fragment">Public Reposisotry: Free, Unlimited Numbers</p>
+<p class="fragment">Private Reposisotry: Paid</p>
+</section>
+
+<section>
+<h2>GitHub</h2>
+<p>
+<span class="fragment">Create Account</span>
+<span class="fragment">, Create Repo</span>
+<span class="fragment">, Clone</span>
+</p>
+<pre class="fragment"><code>$ git clone git://github.com/username/repo_name.git</code></pre>
+<p class="fragment">Read only; uses Git protocol</p>
+<pre class="fragment"><code>$ git clone git@github.com:username/repo_name.git</code></pre>
+<p class="fragment">Read/Write ; uses SSH protocol</p>
+<p class="fragment">But how to Authenticate?!</p>
+</section>
+
+
+<section>
+<h2>GitHub</h2>
+<p class="fragment">Authenticate using SSH Keys</p>
+<p class="fragment">From your machine, create Public&amp;Private Keys:</p>
+<pre class="fragment"><code>$ ssh-keygen</code></pre>
+<pre class="fragment"><code>$ more ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX6e0N3Xq+tXiRp5HzfnTLtGI7j8VOB8HmBhbKJJa6zfT3Unxq67aDw0pLbZuxFBBQ7ejlOK1FauDLsLk3tyAF+D84owXgFIRXb8m2y2kuae65I/A5TVnRlzLvwkqWivy8a8yMccjfnX3LB9JGmY4undKq7aA72We0V9+c/1o4s0TaQkkDVLb0Pkvw4dlfUD rayed@Rayed-MacBook-Pro.local
+</code></pre>
+<p class="fragment">
+Copy and add to your GitHub.com account:
+<br>
+Account Settings &gt; SSH Keys &gt; Add SSH key
+</p>
+<small class="fragment"><a href="https://help.github.com/articles/generating-ssh-keys">Detailed Steps</a></small>
+</section>
+
+
+<section>
+<h2>Complete Flow</h2>
+<p class="fragment">First Time</p>
+<pre class="fragment"><code>$ git clone git@github.com:username/repo_name.git</code></pre>
+<pre class="fragment"><code>
+$ cd repo_name
+$ edit files
+$ git add .
+$ git commit -m "Commit Message"
+$ git push
+</code></pre>
+<p class="fragment">Cloned Already?</p>
+<pre class="fragment"><code>$ git pull</code></pre>
+</section>
+
+
+<section>
+<h2>GitHub: Existing Project</h2>
+<pre class="fragment"><code>$ git remote add origin git@github.com:user/repo_name.git</code></pre>
+<pre class="fragment"><code>$ git push -u origin master</code></pre>
+</section>
+
+
+<section>
+<h2>Heroku</h2>
+<p class="fragment">Platform as a service (PaaS) Provider</p>
+<p class="fragment">Fire your System Admin</p>
+<p class="fragment">Paas vs Iaas vs Saas</p>
+</section>
+
+
+<section>
+<h2>Heroku Addon</h2>
+<p class="fragment">
+PostgreSQL, Memcached, Redis, CouchDB, Solr, MongoDB, Mail, Message Queue
+</p>
+</section>
+
+
+<section>
+<h2>Heroku Deployment</h2>
+<pre class="fragment"><code>$ django-admin.py startproejct mysite</code></pre>
+<pre class="fragment"><code>$ pip freeze &gt; requirements.txt</code></pre>
+<pre class="fragment"><code>$ echo "web: python manage.py runserver 0.0.0.0:$PORT --noreload" &gt; Procfile</code></pre>
+<pre class="fragment"><code>$ git init
+$ git add .
+$ git commit -m "my django app"</code></pre>
+<pre class="fragment"><code>$ heroku create</code></pre>
+<pre class="fragment"><code>$ git push heroku master</code></pre>
+<p class="fragment">Enjoy Your App</p>
+</section>
+
+</section>
+
+
+<section>
+<section>
+<h2>Tips</h2>
+</section>
+
+
+<section>
+<h2>Before You Start</h2>
+<p>Setup Your Git Environment</p>
+<pre><code contenteditable>
+git config --global user.name "Rayed Alrashed"
+git config --global user.email "rayed@example.com"
+git config --global color.ui true
+</code></pre>
+</section>
+
+
+<section>
+<h2>No Passwords</h1>
+<p>Don't put password in the repository</p>
+<p class="fragment">(also Secrets, Keys, Tokens)</p>
+<p class="fragment">Where to Store?</p>
+<pre class="fragment"><code contenteditable>
+$ more settings.php
+:
+$db_pass = $ENV['db_pass'];   &lt;==== Stored in Enviroument Variable
+:
+</code></pre>
+<pre class="fragment"><code contenteditable>
+$ more settings.php
+:
+include '/etc/myapp.conf';    &lt;==== Stored Out of Repository File
+:
+
+$ more /etc/myapp.conf
+$db_pass = $ENV['db_pass'];
+
+</code></pre>
+</section>
+
+
+<section>
+<h2>Multiple Settings</h2>
+<p class="fragment">Prepare multiple configuration files for different enviourment</p>
+<p><span class="fragment">Production</span> <span class="fragment">, Development</span> <span class="fragment">, Staging</span></p>
+<pre class="fragment"><code contenteditable>
+$ more settings-prod.php
+debug = false;
+</code></pre>
+<pre class="fragment"><code contenteditable>
+$ more settings-dev.php
+debug = true;
+</code></pre>
+</section>
+
+
+<section>
+<h2>Change Web Site Flow</h2>
+
+<p class="fragment">Developer Side</p>
+<pre class="fragment"><code contenteditable>$ git pull
+# If the first time use: "git clone git@github.com:rayed/mysite.git"
+</code></pre>
+<pre class="fragment"><code contenteditable>$ edit files
+$ git add .
+$ git commit -m "Fixed encoding bug"
+</code></pre>
+<pre class="fragment"><code contenteditable>$ git push </code></pre>
+
+<p class="fragment">Server Side</p>
+<pre class="fragment"><code contenteditable>
+$ cd mysite
+$ git pull
+</code></pre>
+
+</section>
+
+
+<section>
+<h2>Resources</h2>
+<ul>
+	<li><a href="http://git-scm.com/">Git Web Site</a></li>
+	<li><a href="http://try.github.com/">Try Git: Interactive Git Tutorial</a></li>
+	<li><a href="http://git-scm.com/book">Git Book</a></li>
+	<li><a href="https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf">Printable Cheat Sheet</a></li>
+	<li><a href="http://ndpsoftware.com/git-cheatsheet.html">Interactive Cheat Sheet</a></li>
+</ul>
+</section>
+
+</section>
+
+<section>
+<h2>Than You</h2>
+<p>
+	The slides can be found at: <a href="http://dev.rayed.com/reveal/">dev.rayed.com/reveal</a>
+</p>
+<p>
+	<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>
+</p>
+</section>
+
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

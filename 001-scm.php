@@ -35,11 +35,26 @@
 </section>
 
 <section>
-<h2> ... need for branches & tags ...</h2>
+<h2>One Code ... Multiple Versions?</h2>
+<ul>
+<li class="fragment">Different Clients</li>
+<li class="fragment">Different Features (Firefox 19 vs 20)</li>
+<li class="fragment">Stable vs Development</li>
+<li class="fragment">Long Running Coding</li>
+<li class="fragment">Experiments</li>
+<li class="fragment">... and Merging</li>
+</ul>
 </section>
 
 <section>
-<h2> ... multi user access ...</h2>
+<h2>Team Work</h2>
+<ul>
+<li class="fragment">Single / Multiple Copies</li>
+<li class="fragment">Online / Offline</li>
+<li class="fragment">Who Did What?</li>
+<li class="fragment">Deleting Each Other Work</li>
+<li class="fragment">Access Control</li>
+</ul>
 </section>
 
 <section>

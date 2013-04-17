@@ -28,7 +28,7 @@
 <section>
 <h2>Bare Repository</h2>
 <p class="fragment">Repository without a Working Directory</p>
-<p class="fragment">Normal Repository: mysite</p>
+<p class="fragment">Development Repository: mysite</p>
 <pre class="fragment"><code> .git/
 	COMMIT_EDITMSG
 	FETCH_HEAD

@@ -784,12 +784,17 @@ $ git pull
 <section>
 <h2>Stop Web Access to ".git" Directory</h2>
 <ul>
-<li> Make sure your ".git" directory isn't accessable from the web:
+<li  class="fragment"> Make sure your ".git" directory isn't accessable from the web:
 <br/><a href="http://dev.rayed.com/git_presentation/">http://dev.rayed.com/git_presentation/</a>
 <br/><a href="http://dev.rayed.com/git_presentation/.git">http://dev.rayed.com/git_presentation/.git</a>
 </li>
-<li>Visitors Can Access Your Source Code</li>
-<li>Use Apache ".htaccess"</li>
+<li class="fragment">Visitors Can Access Your Source Code</li>
+<li class="fragment">Sample Apache Configuration: 
+<pre><code>&lt;Location ~ "/.git"&gt;
+       Order deny,allow
+       Deny from All
+&lt;/Location&gt;
+</code></pre></li>
 </ul>
 </section>
 
@@ -807,9 +812,16 @@ $ git pull
 </section>
 
 <section>
-<h2>Than You</h2>
+<h2>Thank You</h2>
 <p>
-	The slides can be found at:<br/> <a href="http://dev.rayed.com/git_presentation/">dev.rayed.com/git_presentation</a>
+	<img src="img/devcamp.png" style="border:0; background:transparent; box-shadow:none;"  />
+&nbsp;
+&nbsp;
+	<img src="img/badir.png" style="border:0; background:transparent; box-shadow:none;"  />
+</p>
+<p>
+	The slides can be found at:<br/>
+	<a href="http://dev.rayed.com/git_presentation/">dev.rayed.com/git_presentation</a>
 </p>
 <p>
 	<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>

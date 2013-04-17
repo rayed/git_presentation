@@ -91,9 +91,16 @@
 </section>
 
 <section>
-<h2>Than You</h2>
+<h2>Thank You</h2>
 <p>
-	The slides can be found at:<br/> <a href="http://dev.rayed.com/git_presentation/">dev.rayed.com/git_presentation</a>
+	<img src="img/devcamp.png" style="border:0; background:transparent; box-shadow:none;"  />
+&nbsp;
+&nbsp;
+	<img src="img/badir.png" style="border:0; background:transparent; box-shadow:none;"  />
+</p>
+<p>
+	The slides can be found at:<br/>
+	<a href="http://dev.rayed.com/git_presentation/">dev.rayed.com/git_presentation</a>
 </p>
 <p>
 	<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>

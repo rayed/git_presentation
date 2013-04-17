@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Introduction to Git Source Code Managment</title>
+		<title>Introduction to Git Source Code Management</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -42,7 +42,7 @@
 
 <section>
 	<p><img src="img/Git-Logo-White.png" "Git Logo" border="0" style="border:0; background:transparent; box-shadow:none;" />
-	<h3>Source Code Managment</h3>
+	<h3>Source Code Management</h3>
 	<p>
 		<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>
 	</p>
@@ -51,7 +51,7 @@
 <section>
 	<h2>What will we cover?</h2>
 	<ol>
-	<li class="fragment">Source Code Managment</li>
+	<li class="fragment">Source Code Management</li>
 	<li class="fragment">Git Basics</li>
 	<li class="fragment">Git Branching</li>
 	<li class="fragment">Git on the Server</li>
@@ -93,7 +93,7 @@
 <section>
 <h2>Than You</h2>
 <p>
-	The slides can be found at: <a href="http://dev.rayed.com/reveal/">dev.rayed.com/reveal</a>
+	The slides can be found at:<br/> <a href="http://dev.rayed.com/git_presentation/">dev.rayed.com/git_presentation</a>
 </p>
 <p>
 	<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>

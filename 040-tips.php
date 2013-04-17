@@ -76,6 +76,18 @@ $ git pull
 
 
 <section>
+<h2>Stop Web Access to ".git" Directory</h2>
+<ul>
+<li> Make sure your ".git" directory isn't accessable from the web:
+<br/><a href="http://dev.rayed.com/git_presentation/">http://dev.rayed.com/git_presentation/</a>
+<br/><a href="http://dev.rayed.com/git_presentation/.git">http://dev.rayed.com/git_presentation/.git</a>
+</li>
+<li>Visitors Can Access Your Source Code</li>
+<li>Use Apache ".htaccess"</li>
+</ul>
+</section>
+
+<section>
 <h2>Resources</h2>
 <ul>
 	<li><a href="http://git-scm.com/">Git Web Site</a></li>

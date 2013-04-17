@@ -94,8 +94,8 @@
 <h2>Thank You</h2>
 <p>
 	<img src="img/devcamp.png" style="border:0; background:transparent; box-shadow:none;"  />
-&nbsp;
-&nbsp;
+	&nbsp;
+	&nbsp;
 	<img src="img/badir.png" style="border:0; background:transparent; box-shadow:none;"  />
 </p>
 <p>
@@ -105,6 +105,21 @@
 <p>
 	<small><a href="http://rayed.com">Rayed Alrashed</a> / <a href="http://twitter.com/rayed">@rayed</a></small>
 </p>
+</section>
+
+<section>
+	<p>
+	<h2>We Are Hiring</h2>
+	<a href="http://www.wirefilter.com/"><img src="img/wf-logo.png" /></a>
+<br>
+	<ul>
+	<li>High Performance Network Equipments</li>
+	<li>Used by Millions Everyday</li>
+	<li>C &amp; Python Shop</li>
+	<li>Enjoy Coding</li>
+	<li>Apply: jobs@wirefilter.com</li>
+	</ul>
+	</p>
 </section>
 
 

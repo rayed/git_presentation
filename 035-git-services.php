@@ -1,5 +1,9 @@
 <section>
 <h2>GitHub &amp; Hiroku</h2>
+<p>
+<img src="img/Octocat.png" alt="GitHub" style="border:0; background:transparent; box-shadow:none;" /> 
+<img src="img/heroku-logo-dark-300x100.png" alt="Heruko" style="border:0; background:transparent; box-shadow:none;" /> <br/>
+</p>
 </section>
 
 
